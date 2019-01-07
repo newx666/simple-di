@@ -1,5 +1,5 @@
 {
-  "name": "newx-simple-di",
+  "name": "@newx/simple-di",
   "version": "1.0.0",
   "description": "Simple Dependency Injection Container for JS",
   "main": "index.js",
