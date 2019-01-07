@@ -1,7 +1,13 @@
 # Simple Dependency Injection Container for JS
 
-## Basic usage
+## Installation
 
+```bash
+npm i --save @newx/simple-di
+```
+
+
+## Basic usage
 
 ```javascript
 const {Container, I} = require('@newx/simple-di');
@@ -49,13 +55,6 @@ const repo = container.get('SomeRepository');
 
 repo.doSomething(); // <-- In this method this.db implements via mysqlConnectionFactory
 ```
-
-## Installation
-
-```bash
-npm i --save @newx/simple-di
-```
-
 
 ## Methods
 ```javascript
