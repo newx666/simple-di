@@ -50,3 +50,9 @@ const repo = di.get('SomeRepository');
 repo.doSomething(); // <-- In this method this.db implements via mysqlConnectionFactory
 ```
 
+## Installation
+
+```bash
+npm i --save @newx/simple-di
+```
+
