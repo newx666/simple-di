@@ -3,7 +3,7 @@ const DIStoreItem = require('./DIStoreItem');
 
 const I = (name) => new Dependency(name);
 
-class DI {
+class Container {
 
     static get TYPE_CONSTRUCTOR() {
         return DIStoreItem.TYPE_CONSTRUCTOR;
@@ -137,6 +137,6 @@ class DI {
     }
 }
 
-const GlobalContainer = new DI();
+const GlobalContainer = new Container();
 
-module.exports = {DI, I, GlobalContainer};
+module.exports = {Container, I, GlobalContainer};

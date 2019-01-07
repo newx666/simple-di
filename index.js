@@ -1,1 +1,1 @@
-module.exports = require('./src/DI');
+module.exports = require('./src/Container');
