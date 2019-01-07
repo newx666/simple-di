@@ -8,9 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/newx666/simple-di.git"
+    "url": "git+https://github.com/newx666/simple-di.git"
   },
-  "keywords": ["DI"],
+  "keywords": [
+    "DI"
+  ],
   "author": "newx",
   "email": "newxjob@gmail.com",
   "license": "ISC",
@@ -21,5 +23,9 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {}
 }

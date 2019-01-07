@@ -4,7 +4,7 @@
 
 
 ```javascript
-const {DI, I} = require('newx-simple-di');
+const {DI, I} = require('@newx/simple-di');
 const mysql = require('mysql');
 
 const di = new DI();
