@@ -1,4 +1,5 @@
-const {expect} = require('chai');
+const { describe, it } = require('node:test');
+const assert = require('node:assert/strict');
 
 const {Container, I} = require('../../src/Container');
 
@@ -8,8 +9,7 @@ describe('Container', () => {
         const value = {a: 1, b: 2};
         container.bindValue('test', value);
 
-        expect(container.get('test')).to.be.equal(value);
-
+        assert.equal(container.get('test'), value);
     });
 
     it('bind factory as singletone', () => {
@@ -18,9 +18,9 @@ describe('Container', () => {
         const factory = (x) => x ** n; // factory return x^n
         container.bindFactory('test', factory, [2]);
 
-        expect(container.get('test')).to.be.equal(2 ** 5);
+        assert.equal(container.get('test'), 2 ** 5);
         n = 1;
-        expect(container.get('test')).to.be.equal(2 ** 5);
+        assert.equal(container.get('test'), 2 ** 5);
     });
 
     it('bind factory as not-singletone', () => {
@@ -29,9 +29,9 @@ describe('Container', () => {
         const factory = (x) => x ** n; // factory return x^n
         container.bindFactory('test', factory, [2], false);
 
-        expect(container.get('test')).to.be.equal(2 ** 5);
+        assert.equal(container.get('test'), 2**5);
         n = 1;
-        expect(container.get('test')).to.be.equal(2 ** 1);
+        assert.equal(container.get('test'), 2**1);
     });
 
     it('bind constructor as singletone', () => {
@@ -46,9 +46,9 @@ describe('Container', () => {
         container.bindConstructor('test', ExampleClass, ['Vasily', 30]);
         const obj1 = container.get('test');
         const obj2 = container.get('test');
-        expect(obj1).to.be.instanceof(ExampleClass);
-        expect(obj1).to.be.equal(obj2);
-        expect(obj1).to.deep.include({name: 'Vasily', age: 30})
+        assert(obj1 instanceof ExampleClass);
+        assert.equal(obj1, obj2);
+        assert.deepEqual(obj1, new ExampleClass('Vasily', 30));
     });
 
     it('bind constructor as not-singletone', () => {
@@ -63,10 +63,10 @@ describe('Container', () => {
         container.bindConstructor('test', ExampleClass, ['Vasily', 30], false);
         const obj1 = container.get('test');
         const obj2 = container.get('test');
-        expect(obj1).to.be.instanceof(ExampleClass);
-        expect(obj1).to.not.equal(obj2);
-        expect(obj1).to.deep.include({name: 'Vasily', age: 30});
-        expect(obj2).to.deep.include({name: 'Vasily', age: 30});
+        assert(obj1 instanceof ExampleClass);
+        assert.notEqual(obj1, obj2);
+        assert.deepEqual(obj1, new ExampleClass('Vasily', 30));
+        assert.deepEqual(obj2, new ExampleClass('Vasily', 30));
     });
 
     it('bind dependency', () => {
@@ -90,7 +90,7 @@ describe('Container', () => {
 
         container.bindValue('reverseName', 'ecilA');
 
-        expect(container.get('hello').helloMessage).to.be.equal('Hello Alice!');
+        assert.equal(container.get('hello').helloMessage, 'Hello Alice!');
     });
 
 });
